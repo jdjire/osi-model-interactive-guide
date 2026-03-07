@@ -1,5 +1,5 @@
 from django.core.management.base import BaseCommand
-from osi.models import OsiLayer
+from osi.models import Layer
 
 class Command(BaseCommand):
     help = 'Loads professional sample data for the OSI Model layers'
@@ -58,10 +58,10 @@ class Command(BaseCommand):
         ]
 
         # Reset existing records
-        OsiLayer.objects.all().delete()
+        Layer.objects.all().delete()
         
         # Load the newly established ones
         for item in data:
-            OsiLayer.objects.create(**item)
+            Layer.objects.create(**item)
             
         self.stdout.write(self.style.SUCCESS('Successfully loaded academic OSI Model data!'))

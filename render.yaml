@@ -2,7 +2,7 @@ services:
   - type: web
     name: osi-guide
     runtime: python3
-    buildCommand: "pip install -r requirements.txt && python manage.py collectstatic --noinput"
+    buildCommand: "pip install -r requirements.txt && python manage.py migrate && python manage.py load_sample_data && python manage.py collectstatic --noinput"
     startCommand: "python manage.py runserver 0.0.0.0:$PORT"
     envVars:
       - key: DEBUG
