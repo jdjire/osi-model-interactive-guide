@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="header-section text-center">
+    <h1>OSI vs TCP/IP Comparison</h1>
+    <p>Understanding how the two major networking models align</p>
+</div>
+
+<div class="comparison-container card p-5 mt-4">
+    <table class="comparison-table">
+        <thead>
+            <tr>
+                <th>OSI Layer</th>
+                <th class="tcp-col">TCP/IP Layer</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>7 - Application</td>
+                <td rowspan="3" class="tcp-layer highlighted">Application</td>
+            </tr>
+            <tr>
+                <td>6 - Presentation</td>
+            </tr>
+            <tr>
+                <td>5 - Session</td>
+            </tr>
+            <tr>
+                <td>4 - Transport</td>
+                <td class="tcp-layer highlighted-alt">Transport</td>
+            </tr>
+            <tr>
+                <td>3 - Network</td>
+                <td class="tcp-layer highlighted">Internet</td>
+            </tr>
+            <tr>
+                <td>2 - Data Link</td>
+                <td rowspan="2" class="tcp-layer highlighted-alt">Network Access (Link)</td>
+            </tr>
+            <tr>
+                <td>1 - Physical</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="comparison-explanation mt-5 pt-4">
+        <h2>Key Differences</h2>
+        <ul>
+            <li><strong>Abstraction:</strong> The OSI model is a generic, conceptual model intended to describe all
+                forms of network communication. TCP/IP is a practical model designed around the specific protocols that
+                make up the internet.</li>
+            <li><strong>Combined Layers:</strong> TCP/IP combines the OSI's Application, Presentation, and Session
+                layers into a single Application layer, treating formatting and session management as part of the
+                application's responsibility.</li>
+            <li><strong>Lower Layers:</strong> TCP/IP often groups the Data Link and Physical layers into a single
+                Network Access (or Link) layer, focusing on how IP packets are framed and transmitted on the local
+                network.</li>
+            <li><strong>Development:</strong> TCP/IP was developed by the Department of Defense (DoD) before the OSI
+                model. As a result, the TCP/IP protocols were already widely adopted by the time the OSI model was
+                formalized.</li>
+        </ul>
+    </div>
+</div>
+{% endblock %}

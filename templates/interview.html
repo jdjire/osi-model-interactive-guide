@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="header-section text-center">
+    <h1>Networking Interview Questions</h1>
+    <p>Test your knowledge with common questions.</p>
+</div>
+
+<div class="interview-container mt-4">
+    {% for q in questions %}
+    <div class="faq-item card p-4 mb-3">
+        <h3 class="faq-question">{{ q.question }}</h3>
+        <p class="faq-answer mt-2">{{ q.answer|linebreaksbr }}</p>
+    </div>
+    {% empty %}
+    <div class="card p-5 text-center">
+        <p>No interview questions available yet.</p>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

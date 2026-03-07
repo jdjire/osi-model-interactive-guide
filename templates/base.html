@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OSI Model Interactive Guide</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <header class="app-header">
+        <div class="container header-container">
+            <a href="{% url 'index' %}" class="logo">
+                <div class="logo-icon">JD</div>
+                <span class="logo-text">OSI Guide</span>
+            </a>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="{% url 'index' %}">Layers</a></li>
+                    <li><a href="{% url 'protocol_explorer' %}">Protocols</a></li>
+                    <li><a href="{% url 'simulation' %}">Simulation</a></li>
+                    <li><a href="{% url 'comparison' %}">Comparison</a></li>
+                    <li><a href="{% url 'quiz' %}">Quiz</a></li>
+                    <li><a href="{% url 'interview' %}">Interview QA</a></li>
+                </ul>
+            </nav>
+            <div class="theme-toggle">
+                <button id="theme-toggle-btn" aria-label="Toggle Dark Mode">
+                    <span class="icon">🌓</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main class="container main-content">
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer class="app-footer">
+        <div class="container">
+            <p>&copy; 2026 OSI Model Interactive Guide. Built for Networking Education.</p>
+        </div>
+    </footer>
+
+    <script src="{% static 'js/main.js' %}"></script>
+    {% block scripts %}{% endblock %}
+</body>
+
+</html>

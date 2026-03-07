@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="header-section text-center">
+    <h1>Protocol Explorer</h1>
+    <p>Search and filter common networking protocols</p>
+</div>
+
+<div class="explorer-container card p-4">
+    <div class="filters-bar">
+        <input type="text" id="search-input" placeholder="Search protocols..." class="form-control">
+        <select id="layer-filter" class="form-control ml-3">
+            <option value="">All Layers</option>
+            <option value="7">Layer 7 - Application</option>
+            <option value="6">Layer 6 - Presentation</option>
+            <option value="5">Layer 5 - Session</option>
+            <option value="4">Layer 4 - Transport</option>
+            <option value="3">Layer 3 - Network</option>
+            <option value="2">Layer 2 - Data Link</option>
+            <option value="1">Layer 1 - Physical</option>
+        </select>
+    </div>
+
+    <table class="protocol-table">
+        <thead>
+            <tr>
+                <th>Protocol Name</th>
+                <th>Layer</th>
+                <th>Default Port</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody id="protocol-list">
+            {% for protocol in protocols %}
+            <tr>
+                <td><strong>{{ protocol.name }}</strong></td>
+                <td><span class="badge">{{ protocol.layer.name }}</span></td>
+                <td>{{ protocol.default_port|default:"-" }}</td>
+                <td>{{ protocol.description }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

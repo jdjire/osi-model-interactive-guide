@@ -1,0 +1,85 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="hero">
+    <h1>The OSI Model</h1>
+    <p>Interactive Guide for Understanding Network Layers</p>
+</div>
+
+<div class="interactive-layout">
+    <div class="osi-stack">
+        {% for layer in layers %}
+        <div class="layer-card layer-{{ layer.layer_number }}" data-layer="{{ layer.layer_number }}">
+            <div class="layer-number">{{ layer.layer_number }}</div>
+            <div class="layer-name">{{ layer.name }}</div>
+            <div class="tooltip">
+                <strong>Protocols:</strong><br>
+                {{ layer.protocols }}
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+    <div class="layer-detail-panel" id="detail-panel">
+        <div class="panel-placeholder">
+            <h3>Select a layer</h3>
+            <p>Click on any layer in the stack to view its details.</p>
+        </div>
+        <div class="panel-content hidden" id="panel-content">
+            <h2 id="pd-name">Layer Name</h2>
+            <div class="badge" id="pd-num">Layer X</div>
+
+            <div class="detail-section">
+                <h3>Description</h3>
+                <p id="pd-desc">Description goes here...</p>
+            </div>
+
+            <div class="detail-section">
+                <h3>Real-life Example</h3>
+                <p id="pd-example">Example goes here...</p>
+            </div>
+
+            <div class="detail-section">
+                <h3>Common Protocols</h3>
+                <p id="pd-protocols">Protocols go here...</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="real-world-section mt-5">
+    <h2>What happens when you open a website?</h2>
+    <div class="timeline">
+        <div class="timeline-item">
+            <div class="timeline-num">1</div>
+            <div class="timeline-text"><strong>Application</strong> — Browser sends HTTP request</div>
+        </div>
+        <div class="timeline-item">
+            <div class="timeline-num">2</div>
+            <div class="timeline-text"><strong>Presentation</strong> — Request is formatted and encrypted (TLS/SSL)
+            </div>
+        </div>
+        <div class="timeline-item">
+            <div class="timeline-num">3</div>
+            <div class="timeline-text"><strong>Session</strong> — Session is established with server</div>
+        </div>
+        <div class="timeline-item">
+            <div class="timeline-num">4</div>
+            <div class="timeline-text"><strong>Transport</strong> — TCP establishes connection and segments data</div>
+        </div>
+        <div class="timeline-item">
+            <div class="timeline-num">5</div>
+            <div class="timeline-text"><strong>Network</strong> — IP routes packet over the internet</div>
+        </div>
+        <div class="timeline-item">
+            <div class="timeline-num">6</div>
+            <div class="timeline-text"><strong>Data Link</strong> — MAC address used to route frame on local network
+            </div>
+        </div>
+        <div class="timeline-item">
+            <div class="timeline-num">7</div>
+            <div class="timeline-text"><strong>Physical</strong> — Bits transmitted over wire/wireless</div>
+        </div>
+    </div>
+</div>
+{% endblock %}

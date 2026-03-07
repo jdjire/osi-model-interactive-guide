@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="header-section text-center">
+    <h1>Packet Journey Simulation</h1>
+    <p>Watch how data moves through the OSI layers</p>
+</div>
+
+<div class="simulation-container">
+    <div class="controls text-center mb-4">
+        <button id="send-btn" class="btn btn-primary btn-lg">Send Packet</button>
+        <button id="reset-btn" class="btn btn-secondary btn-lg ml-2" disabled>Reset</button>
+    </div>
+
+    <div class="sim-play-area card p-5 relative">
+        <div class="sender-host">
+            <h3>Sender</h3>
+            <div class="sim-stack">
+                <div class="sim-layer" id="layer-application">Application</div>
+                <div class="sim-layer" id="layer-presentation">Presentation</div>
+                <div class="sim-layer" id="layer-session">Session</div>
+                <div class="sim-layer" id="layer-transport">Transport</div>
+                <div class="sim-layer" id="layer-network">Network</div>
+                <div class="sim-layer" id="layer-data-link">Data Link</div>
+                <div class="sim-layer" id="layer-physical">Physical</div>
+            </div>
+        </div>
+
+        <div class="packet" id="packet">
+            <div class="packet-content">Data</div>
+        </div>
+
+        <div class="receiver-host hidden">
+            <!-- For future expandability -->
+        </div>
+
+        <div class="explanation-panel card" id="sim-explanation">
+            <h3 id="sim-step-title">Ready</h3>
+            <p id="sim-step-desc">Click "Send Packet" to begin the simulation.</p>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="{% static 'js/simulation.js' %}"></script>
+{% endblock %}

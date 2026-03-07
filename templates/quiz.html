@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="header-section text-center">
+    <h1>OSI Model Knowledge Quiz</h1>
+    <p>Test your understanding of networking concepts.</p>
+</div>
+
+<div class="quiz-container">
+    <div id="quiz-setup">
+        <div class="card p-5 text-center">
+            <h2>Ready to start?</h2>
+            <p>You will face 10 random networking questions based on the OSI model.</p>
+            <button id="start-btn" class="btn btn-primary mt-3">Start Quiz</button>
+        </div>
+    </div>
+
+    <div id="quiz-area" class="hidden">
+        <div class="card p-4">
+            <div class="quiz-header">
+                <div>Question <span id="current-question-num">1</span> of 10</div>
+                <div class="score-display">Score: <span id="score">0</span></div>
+            </div>
+
+            <h3 id="question-text" class="mt-4 mb-4">Question goes here?</h3>
+
+            <div class="options-grid">
+                <button class="option-btn" data-choice="A">
+                    <span class="choice-letter">A</span>
+                    <span id="opt-a-text">Option A</span>
+                </button>
+                <button class="option-btn" data-choice="B">
+                    <span class="choice-letter">B</span>
+                    <span id="opt-b-text">Option B</span>
+                </button>
+                <button class="option-btn" data-choice="C">
+                    <span class="choice-letter">C</span>
+                    <span id="opt-c-text">Option C</span>
+                </button>
+                <button class="option-btn" data-choice="D">
+                    <span class="choice-letter">D</span>
+                    <span id="opt-d-text">Option D</span>
+                </button>
+            </div>
+
+            <div id="explanation-box" class="explanation-box hidden mt-4">
+                <h4 id="result-title">Result</h4>
+                <p id="explanation-text"></p>
+                <button id="next-btn" class="btn btn-primary mt-3">Next Question</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="quiz-results" class="hidden">
+        <div class="card p-5 text-center">
+            <h2>Quiz Complete!</h2>
+            <div class="final-score mb-4">You scored <span id="final-score-val"></span> out of 10.</div>
+            <button id="restart-btn" class="btn btn-primary">Try Again</button>
+        </div>
+    </div>
+</div>
+{% endblock %}
