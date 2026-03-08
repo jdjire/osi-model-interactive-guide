@@ -7,7 +7,7 @@ services:
   - type: web
     name: osi-guide
     runtime: python3
-    buildCommand: "./build.sh"
+    buildCommand: "bash build.sh"
     startCommand: "gunicorn osi_guide.wsgi:application --bind 0.0.0.0:$PORT"
     envVars:
       - key: DATABASE_URL

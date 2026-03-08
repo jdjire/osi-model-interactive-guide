@@ -72,6 +72,55 @@ class Command(BaseCommand):
             explanation="The Presentation layer deals with syntax and semantics, including encryption.",
             layer_reference=layers[6]
         )
+        Question.objects.create(
+            question="MAC addresses are primarily used at which layer?",
+            option_a="Network", option_b="Data Link", option_c="Physical", option_d="Transport",
+            correct_answer="B",
+            explanation="MAC addresses identify devices on the same local network at the Data Link layer.",
+            layer_reference=layers[2]
+        )
+        Question.objects.create(
+            question="Which transport protocol is connectionless and does NOT guarantee delivery?",
+            option_a="TCP", option_b="IP", option_c="UDP", option_d="HTTP",
+            correct_answer="C",
+            explanation="UDP is connectionless and faster but does not guarantee packet delivery.",
+            layer_reference=layers[4]
+        )
+        Question.objects.create(
+            question="What is the PDU (Protocol Data Unit) called at the Network Layer?",
+            option_a="Segment", option_b="Frame", option_c="Packet", option_d="Bit",
+            correct_answer="C",
+            explanation="At the Network Layer, the unit of data is called a Packet.",
+            layer_reference=layers[3]
+        )
+        Question.objects.create(
+            question="Which layer establishes, manages, and terminates connections between applications?",
+            option_a="Session", option_b="Transport", option_c="Presentation", option_d="Application",
+            correct_answer="A",
+            explanation="The Session layer controls the dialogue between computers and manages the session.",
+            layer_reference=layers[5]
+        )
+        Question.objects.create(
+            question="Which layer is responsible for transmitting raw bit streams over a physical medium?",
+            option_a="Data Link", option_b="Physical", option_c="Network", option_d="Transport",
+            correct_answer="B",
+            explanation="The Physical layer deals directly with the physical media (cables, radio waves) and raw bits.",
+            layer_reference=layers[1]
+        )
+        Question.objects.create(
+            question="Which of the following is considered an Application Layer protocol?",
+            option_a="ARP", option_b="IPv4", option_c="SMTP", option_d="UDP",
+            correct_answer="C",
+            explanation="SMTP (Simple Mail Transfer Protocol) provides email services directly to the application layer.",
+            layer_reference=layers[7]
+        )
+        Question.objects.create(
+            question="Which layer ensures error-free transmission of data over a physical link?",
+            option_a="Physical", option_b="Network", option_c="Data Link", option_d="Session",
+            correct_answer="C",
+            explanation="The Data Link layer handles error detection and node-to-node frame delivery.",
+            layer_reference=layers[2]
+        )
         
         self.stdout.write("Questions loaded.")
         
