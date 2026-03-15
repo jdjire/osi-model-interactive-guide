@@ -8,6 +8,13 @@ class Command(BaseCommand):
 
     def handle(self, *args, **kwargs):
         self.stdout.write("Loading sample data...")
+        LAYER_DATA_LINK = "Data Link"
+        LAYER_TRANSPORT = "Transport"
+        LAYER_NETWORK = "Network"
+        LAYER_PHYSICAL = "Physical"
+        LAYER_SESSION = "Session"
+        LAYER_APPLICATION = "Application"
+        LAYER_PRESENTATION = "Presentation"
         
         # Clear existing data
         Layer.objects.all().delete()
@@ -17,13 +24,13 @@ class Command(BaseCommand):
         
         # 1. OSI Layers
         layers_data = [
-            (7, 'Application', 'Provides network services to the applications of the user.', 'Web Browser, Email Client', 'HTTP, HTTPS, FTP, SMTP, DNS'),
-            (6, 'Presentation', 'Ensures that data is in a usable format and is where data encryption occurs.', 'Format translation, SSL/TLS Encryption', 'JPEG, ASCII, TLS'),
-            (5, 'Session', 'Maintains connections and is responsible for controlling ports and sessions.', 'Logging into a website, establishing a session', 'NetBIOS, PPTP'),
-            (4, 'Transport', 'Transmits data using transmission protocols including TCP and UDP.', 'TCP connection for a web page download', 'TCP, UDP, SCTP'),
-            (3, 'Network', 'Decides which physical path the data will take (Routing).', 'A Router finding the best path to a server', 'IP, ICMP, IPsec, IGMP'),
-            (2, 'Data Link', 'Defines the format of data on the network (Frames, MAC address).', 'Switch forwarding frames to a specific computer', 'Ethernet, ARP, PPP'),
-            (1, 'Physical', 'Transmits raw bit stream over the physical medium.', 'Cables, Hubs, Wireless signals', '100BaseT, 802.11, ISDN')
+            (7, LAYER_APPLICATION, 'Provides network services to the applications of the user.', 'Web Browser, Email Client', 'HTTP, HTTPS, FTP, SMTP, DNS'),
+            (6, LAYER_PRESENTATION, 'Ensures that data is in a usable format and is where data encryption occurs.', 'Format translation, SSL/TLS Encryption', 'JPEG, ASCII, TLS'),
+            (5, LAYER_SESSION, 'Maintains connections and is responsible for controlling ports and sessions.', 'Logging into a website, establishing a session', 'NetBIOS, PPTP'),
+            (4, LAYER_TRANSPORT, 'Transmits data using transmission protocols including TCP and UDP.', 'TCP connection for a web page download', 'TCP, UDP, SCTP'),
+            (3, LAYER_NETWORK, 'Decides which physical path the data will take (Routing).', 'A Router finding the best path to a server', 'IP, ICMP, IPsec, IGMP'),
+            (2, LAYER_DATA_LINK, 'Defines the format of data on the network (Frames, MAC address).', 'Switch forwarding frames to a specific computer', 'Ethernet, ARP, PPP'),
+            (1, LAYER_PHYSICAL, 'Transmits raw bit stream over the physical medium.', 'Cables, Hubs, Wireless signals', '100BaseT, 802.11, ISDN')
         ]
         
         layers = {}
@@ -60,7 +67,7 @@ class Command(BaseCommand):
         )
         Question.objects.create(
             question="At which layer do routers primarily operate?",
-            option_a="Physical", option_b="Data Link", option_c="Network", option_d="Transport",
+            option_a=LAYER_PHYSICAL, option_b=LAYER_DATA_LINK, option_c=LAYER_NETWORK, option_d=LAYER_TRANSPORT,
             correct_answer="C",
             explanation="Routers operate at the Network Layer (Layer 3) to route packets using IP addresses.",
             layer_reference=layers[3]
@@ -74,9 +81,9 @@ class Command(BaseCommand):
         )
         Question.objects.create(
             question="MAC addresses are primarily used at which layer?",
-            option_a="Network", option_b="Data Link", option_c="Physical", option_d="Transport",
+            option_a=LAYER_NETWORK, option_b=LAYER_DATA_LINK, option_c=LAYER_PHYSICAL, option_d=LAYER_TRANSPORT,
             correct_answer="B",
-            explanation="MAC addresses identify devices on the same local network at the Data Link layer.",
+            explanation=f"MAC addresses identify devices on the same local network at the {LAYER_DATA_LINK} layer.",
             layer_reference=layers[2]
         )
         Question.objects.create(
@@ -95,14 +102,14 @@ class Command(BaseCommand):
         )
         Question.objects.create(
             question="Which layer establishes, manages, and terminates connections between applications?",
-            option_a="Session", option_b="Transport", option_c="Presentation", option_d="Application",
+            option_a=LAYER_SESSION, option_b=LAYER_TRANSPORT, option_c=LAYER_PRESENTATION, option_d=LAYER_APPLICATION,
             correct_answer="A",
             explanation="The Session layer controls the dialogue between computers and manages the session.",
             layer_reference=layers[5]
         )
         Question.objects.create(
             question="Which layer is responsible for transmitting raw bit streams over a physical medium?",
-            option_a="Data Link", option_b="Physical", option_c="Network", option_d="Transport",
+            option_a=LAYER_DATA_LINK, option_b=LAYER_PHYSICAL, option_c=LAYER_NETWORK, option_d=LAYER_TRANSPORT,
             correct_answer="B",
             explanation="The Physical layer deals directly with the physical media (cables, radio waves) and raw bits.",
             layer_reference=layers[1]
@@ -116,9 +123,9 @@ class Command(BaseCommand):
         )
         Question.objects.create(
             question="Which layer ensures error-free transmission of data over a physical link?",
-            option_a="Physical", option_b="Network", option_c="Data Link", option_d="Session",
+            option_a=LAYER_PHYSICAL, option_b=LAYER_NETWORK, option_c=LAYER_DATA_LINK, option_d=LAYER_SESSION,
             correct_answer="C",
-            explanation="The Data Link layer handles error detection and node-to-node frame delivery.",
+            explanation=f"The {LAYER_DATA_LINK} layer handles error detection and node-to-node frame delivery.",
             layer_reference=layers[2]
         )
         

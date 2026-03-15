@@ -21,14 +21,17 @@ In Vercel project settings, add:
 ## 4) Deploy
 Trigger deployment from Vercel.
 
-## 5) Run migrations
-After deployment, run:
+On each deploy, Vercel runs:
 
 ```bash
 python manage.py migrate
+python manage.py seed_initial_data
+python manage.py collectstatic --noinput
 ```
 
-## 6) Optional: create admin user
+`seed_initial_data` only loads sample data if the `Layer` table is empty.
+
+## 5) Optional: create admin user
 
 ```bash
 python manage.py createsuperuser
