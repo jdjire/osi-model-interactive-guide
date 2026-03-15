@@ -5,7 +5,7 @@ from .models import Question
 def quiz_view(request):
     return render(request, 'quiz.html')
 
-def get_questions(request):
+def get_questions(_request):
     questions = Question.objects.all().order_by('?')[:10]  # Get 10 random questions
     data = []
     for q in questions:

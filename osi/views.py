@@ -19,7 +19,7 @@ def index(request):
             return render(request, 'error.html', {'error': 'Database error'}, status=500)
         raise
 
-def layer_detail(request, layer_number):
+def layer_detail(_request, layer_number):
     """API endpoint to fetch layer details safely via AJAX."""
     try:
         layer = Layer.objects.get(layer_number=layer_number)
